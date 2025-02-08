@@ -10,30 +10,13 @@
         padding: 40px;
       }
 
-      h1 {
-        position: relative;
-        border: 1px solid;
-        display: inline;
-      }
-
-      h1::after {
-        content: "";
-        background: linear-gradient(to right, red, blue);
-
-        height: 4px;
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        transition: 100ms;
-      }
-
-      h1:hover::after {
-        width: 0;
+      a::after {
+        content: "→";
+        color: red;
       }
     </style>
   </head>
   <body>
-    <h1>My Element</h1>
+    <p>Visite <a href="#">Google</a> or <a href="#">Youtube</a></p>
   </body>
 </html>
