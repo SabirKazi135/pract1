@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>::after Practice</title>
+    <style>
+      /* 1. Add a right arrow after all links */
+      a::after {
+        content: " →";
+        color: red;
+        font-weight: bold;
+      }
+
+      /* 2. Add a checkmark after each list item */
+      li::after {
+        content: " ✔";
+        color: green;
+        font-size: 14px;
+      }
+
+      /* 3. Add "New!" label after latest items */
+      .new-item::after {
+        content: " New!";
+        color: white;
+        background: red;
+        padding: 2px 5px;
+        font-size: 12px;
+        border-radius: 3px;
+        margin-left: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>1. Links with Arrow</h2>
+    <p>Visit <a href="#">Google</a> or <a href="#">YouTube</a>.</p>
+
+    <h2>2. List with Checkmarks</h2>
+    <ul>
+      <li>Task 1</li>
+      <li>Task 2</li>
+      <li>Task 3</li>
+    </ul>
+
+    <h2>3. New Items</h2>
+    <p class="new-item">This is a new product</p>
+    <p>This is an old product</p>
+  </body>
+</html>

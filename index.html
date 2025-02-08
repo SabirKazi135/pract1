@@ -18,12 +18,18 @@
 
       h1::after {
         content: "";
-        background-color: red;
+        background: linear-gradient(to right, red, blue);
+
         height: 4px;
         width: 100%;
         position: absolute;
         bottom: 0;
         left: 0;
+        transition: 100ms;
+      }
+
+      h1:hover::after {
+        width: 0;
       }
     </style>
   </head>
