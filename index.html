@@ -6,40 +6,41 @@
     <title>Document</title>
     <style>
       body {
+        padding: 50px;
         background-color: gray;
         color: black;
       }
-
-      h1::after {
-        content: "";
-        animation: dots 1.5s infinite;
+      p {
+        font-size: 20px;
+        border: 1px solid;
+        width: max-content;
+        padding: 2px 8px;
+        position: relative;
       }
-
-      @keyframes dots {
-        33% {
-          content: ".";
-        }
-        66% {
-          content: "..";
-        }
-        99% {
-          content: "...";
-        }
-      }
-
-      button::after {
+      p::after {
         content: "";
         transition: 1s ease;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: 50%;
       }
 
-      button:hover::after {
-        content: " copied!";
-        color: green;
+      p:hover::after {
+        content: "hell hella";
+        background-color: black;
+        color: white;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 55%;
+        width: max-content;
+        border-radius: 5px;
+        padding: 4px 10px;
       }
     </style>
   </head>
   <body>
-    <h1>loading</h1>
-    <button>copy</button>
+    <p>word</p>
   </body>
 </html>
