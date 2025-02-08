@@ -3,50 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>::after Practice</title>
+    <title>Advanced ::after Practice</title>
     <style>
       body {
         background-color: gray;
+        color: black;
       }
-      /* 1. Add a right arrow after all links */
-      a::after {
-        content: " →";
-        color: red;
-        font-weight: bold;
+      /* 1. Animated Loading Dots */
+      .loading::after {
+        content: " .";
+        animation: dots 1.5s infinite;
+      }
+      @keyframes dots {
+        0% {
+          content: " .";
+        }
+        33% {
+          content: " ..";
+        }
+        66% {
+          content: " ...";
+        }
+        100% {
+          content: " .";
+        }
       }
 
-      /* 2. Add a checkmark after each list item */
-      li::after {
-        content: " ✔";
+      /* 2. Show 'Copied!' on Button Click */
+      button::after {
+        content: "";
+        visibility: hidden;
         color: green;
-        font-size: 14px;
+        margin-left: 10px;
+        transition: visibility 0.3s;
+      }
+      button:active::after {
+        content: " Copied!";
+        visibility: visible;
       }
 
-      /* 3. Add "New!" label after latest items */
-      .new-item::after {
-        content: " New!";
+      /* 3. Tooltip Effect */
+      .tooltip {
+        position: relative;
+        cursor: pointer;
+        font-weight: bold;
+        color: blue;
+      }
+      .tooltip::after {
+        content: " This is extra info";
+        position: absolute;
+        background: black;
         color: white;
-        background: red;
-        padding: 2px 5px;
+        padding: 5px 10px;
+        border-radius: 5px;
         font-size: 12px;
-        border-radius: 3px;
-        margin-left: 5px;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+      }
+      .tooltip:hover::after {
+        visibility: visible;
+        opacity: 1;
       }
     </style>
   </head>
   <body>
-    <h2>1. Links with Arrow</h2>
-    <p>Visit <a href="#">Google</a> or <a href="#">YouTube</a>.</p>
+    <h2>1. Animated Loading</h2>
+    <p class="loading">Loading</p>
 
-    <h2>2. List with Checkmarks</h2>
-    <ul>
-      <li>Task 1</li>
-      <li>Task 2</li>
-      <li>Task 3</li>
-    </ul>
+    <h2>2. Click the Button</h2>
+    <button>Copy</button>
 
-    <h2>3. New Items</h2>
-    <p class="new-item">This is a new product</p>
-    <p>This is an old product</p>
+    <h2>3. Hover for Tooltip</h2>
+    <p>Hover over this <span class="tooltip">word</span> to see extra info.</p>
   </body>
 </html>
