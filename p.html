@@ -3,82 +3,152 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Advanced ::after Practice</title>
+    <title>Password Generator</title>
     <style>
       body {
-        background-color: gray;
-        color: black;
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
       }
-      /* 1. Animated Loading Dots */
-      .loading::after {
-        content: " .";
-        animation: dots 1.5s infinite;
+      .container {
+        max-width: 400px;
+        margin: auto;
+        background: #1e1e1e;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
       }
-      @keyframes dots {
-        0% {
-          content: " .";
-        }
-        33% {
-          content: " ..";
-        }
-        66% {
-          content: " ...";
-        }
-        100% {
-          content: " .";
-        }
-      }
-
-      /* 2. Show 'Copied!' on Button Click */
-      button::after {
-        content: "";
-        visibility: hidden;
-        color: green;
-        margin-left: 10px;
-        transition: visibility 0.3s;
-      }
-      button:active::after {
-        content: " Copied!";
-        visibility: visible;
-      }
-
-      /* 3. Tooltip Effect */
-      .tooltip {
-        position: relative;
-        cursor: pointer;
-        font-weight: bold;
-        color: blue;
-      }
-      .tooltip::after {
-        content: " This is extra info";
-        position: absolute;
-        background: black;
-        color: white;
-        padding: 5px 10px;
+      input,
+      button {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: none;
         border-radius: 5px;
-        font-size: 12px;
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-        bottom: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        white-space: nowrap;
+        font-size: 16px;
       }
-      .tooltip:hover::after {
-        visibility: visible;
-        opacity: 1;
+      input {
+        background: #333;
+        color: #fff;
+      }
+      button {
+        background: #ff9800;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #e68900;
+      }
+      #password {
+        margin-top: 10px;
+        font-weight: bold;
+        word-break: break-all;
       }
     </style>
   </head>
   <body>
-    <h2>1. Animated Loading</h2>
-    <p class="loading">Loading</p>
+    <div class="container">
+      <h2>Password Generator</h2>
+      <label>Number of Letters:</label>
+      <input type="number" id="letters" min="1" value="5" />
 
-    <h2>2. Click the Button</h2>
-    <button>Copy</button>
+      <label>Number of Symbols:</label>
+      <input type="number" id="symbols" min="1" value="3" />
 
-    <h2>3. Hover for Tooltip</h2>
-    <p>Hover over this <span class="tooltip">word</span> to see extra info.</p>
+      <label>Number of Numbers:</label>
+      <input type="number" id="numbers" min="1" value="3" />
+
+      <button onclick="generatePassword()">Generate Password</button>
+      <p id="password"></p>
+    </div>
+
+    <script>
+      function generatePassword() {
+        const letters = [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h",
+          "i",
+          "j",
+          "k",
+          "l",
+          "m",
+          "n",
+          "o",
+          "p",
+          "q",
+          "r",
+          "s",
+          "t",
+          "u",
+          "v",
+          "w",
+          "x",
+          "y",
+          "z",
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "K",
+          "L",
+          "M",
+          "N",
+          "O",
+          "P",
+          "Q",
+          "R",
+          "S",
+          "T",
+          "U",
+          "V",
+          "W",
+          "X",
+          "Y",
+          "Z",
+        ];
+        const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+        const symbols = ["!", "#", "$", "%", "&", "(", ")", "*", "+"];
+
+        let nrLetters = parseInt(document.getElementById("letters").value);
+        let nrSymbols = parseInt(document.getElementById("symbols").value);
+        let nrNumbers = parseInt(document.getElementById("numbers").value);
+
+        let passwordArray = [];
+
+        for (let i = 0; i < nrLetters; i++) {
+          passwordArray.push(
+            letters[Math.floor(Math.random() * letters.length)]
+          );
+        }
+        for (let i = 0; i < nrSymbols; i++) {
+          passwordArray.push(
+            symbols[Math.floor(Math.random() * symbols.length)]
+          );
+        }
+        for (let i = 0; i < nrNumbers; i++) {
+          passwordArray.push(
+            numbers[Math.floor(Math.random() * numbers.length)]
+          );
+        }
+
+        passwordArray.sort(() => Math.random() - 0.5);
+        document.getElementById("password").textContent =
+          "Your Password: " + passwordArray.join("");
+      }
+    </script>
   </body>
 </html>
