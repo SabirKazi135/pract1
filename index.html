@@ -6,12 +6,46 @@
     <title>Document</title>
     <style>
       body {
-        background-color: gray;
+        background-color: #121212;
+        font-family: Arial, sans-serif;
+        box-sizing: border-box;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+
+      .container {
+        background-color: #1e1e1e;
+        text-align: center;
+        padding: 20px;
+
+        width: max-content;
+        border-radius: 10px;
+        box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 10px;
+      }
+
+      h1 {
+        font-size: 24px;
+        margin: 20px 0px;
+      }
+
+      input {
+        border: none;
+        background-color: #333333;
+        font-size: 16px;
+        color: white;
+        margin: 5px 0px;
+        padding: 10px;
+        cursor: text;
+        overflow: clip;
+        padding: 5px;
       }
     </style>
   </head>
   <body>
-    <div>
+    <div class="container">
       <h1>Password Generator</h1>
       <form action="">
         <label for="letters">Number of Letters:</label>
