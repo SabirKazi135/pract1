@@ -144,10 +144,6 @@
       const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
       const symbols = ["!", "#", "$", "%", "&", "(", ")", "*", "+"];
 
-      const Letters = document.getElementById("letters").value;
-      const Symbols = document.getElementById("symbols").value;
-      const Numbers = document.getElementById("numbers").value;
-
       const Button = document.getElementById("button");
       let lengthNum = numbers.length;
       let lengthSym = symbols.length;
@@ -155,7 +151,11 @@
 
       const result = document.getElementById("result");
 
-      Button.addEventListener("click", () => {
+      Button.addEventListener("click", (event) => {
+        event.preventDefault();
+        const Letters = document.getElementById("letters").value;
+        const Symbols = document.getElementById("symbols").value;
+        const Numbers = document.getElementById("numbers").value;
         let password = "";
         for (let index = 0; index < Letters; index++) {
           password += letters[Math.floor(Math.random() * lengthLetters)];
@@ -167,7 +167,12 @@
           password += numbers[Math.floor(Math.random() * lengthNum)];
         }
 
-        result.innerHTML = password;
+        let arr = password.split("");
+        for (let i = arr.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1)); // Random index
+          [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap
+        }
+        result.innerHTML = arr.join("");
       });
     </script>
   </body>
