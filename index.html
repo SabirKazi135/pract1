@@ -11,32 +11,18 @@
         color: black;
       }
       p {
-        font-size: 20px;
-        border: 1px solid;
-        width: max-content;
-        padding: 2px 8px;
+        cursor: pointer;
         position: relative;
       }
+
       p::after {
-        content: "";
-        transition: 1s ease;
+        content: "This is extra info";
         position: absolute;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        bottom: 50%;
+        background: black;
+        color: white;
       }
 
       p:hover::after {
-        content: "hell hella";
-        background-color: black;
-        color: white;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 55%;
-        width: max-content;
-        border-radius: 5px;
-        padding: 4px 10px;
       }
     </style>
   </head>
