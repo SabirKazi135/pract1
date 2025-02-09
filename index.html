@@ -152,17 +152,22 @@
       let lengthNum = numbers.length;
       let lengthSym = symbols.length;
       let lengthLetters = letters.length;
-      Button.addEventListener("click", (event) => {
+
+      const result = document.getElementById("result");
+
+      Button.addEventListener("click", () => {
         let password = "";
         for (let index = 0; index < Letters; index++) {
-          password += Math.floor(Math.random() * lengthNum);
+          password += letters[Math.floor(Math.random() * lengthLetters)];
         }
         for (let index = 0; index < Symbols; index++) {
-          password += Math.floor(Math.random() * length);
+          password += symbols[Math.floor(Math.random() * lengthSym)];
         }
         for (let index = 0; index < Numbers; index++) {
-          password += Math.floor(Math.random() * lengthNum);
+          password += numbers[Math.floor(Math.random() * lengthNum)];
         }
+
+        result.innerHTML = password;
       });
     </script>
   </body>
