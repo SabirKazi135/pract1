@@ -150,9 +150,17 @@
 
       const Button = document.getElementById("button");
       let lengthNum = numbers.length;
+      let lengthSym = symbols.length;
+      let lengthLetters = letters.length;
       Button.addEventListener("click", (event) => {
         let password = "";
         for (let index = 0; index < Letters; index++) {
+          password += Math.floor(Math.random() * lengthNum);
+        }
+        for (let index = 0; index < Symbols; index++) {
+          password += Math.floor(Math.random() * length);
+        }
+        for (let index = 0; index < Numbers; index++) {
           password += Math.floor(Math.random() * lengthNum);
         }
       });
