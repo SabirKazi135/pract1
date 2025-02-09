@@ -61,6 +61,9 @@
       button:hover {
         background: #e68900;
       }
+
+      .result {
+      }
     </style>
   </head>
   <body>
@@ -79,7 +82,7 @@
         <br />
         <input type="number" name="" id="numbers" value="3" min="1" />
         <br />
-        <button>Generate Password</button>
+        <button id="button">Generate Password</button>
       </form>
       <div id="result"></div>
     </div>
@@ -144,7 +147,15 @@
       const Letters = document.getElementById("letters").value;
       const Symbols = document.getElementById("symbols").value;
       const Numbers = document.getElementById("numbers").value;
-      console.log(Letters, Symbols, Numbers);
+
+      const Button = document.getElementById("button");
+      let lengthNum = numbers.length;
+      Button.addEventListener("click", (event) => {
+        let password = "";
+        for (let index = 0; index < Letters; index++) {
+          password += Math.floor(Math.random() * lengthNum);
+        }
+      });
     </script>
   </body>
 </html>
