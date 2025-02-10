@@ -5,15 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
       body {
-        background-color: gray;
+        color: white;
+        background-color: rgb(9, 11, 19);
+        min-height: 100vh;
+        min-height: 100dvh;
+      }
+      nav {
+        background-color: rgb(13, 13, 41);
+      }
+      a {
+        color: white;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+      }
+
+      nav .home-li {
+        margin-right: auto;
+      }
+
+      nav a {
+        display: flex;
+        text-decoration: none;
+        padding: 1em 2em;
+      }
+      nav li {
+        display: flex;
+      }
+      nav a:hover {
+        background-color: rgba(13, 13, 124, 0.7);
       }
     </style>
   </head>
   <body>
     <nav>
       <ul>
-        <li><a href="#">home</a></li>
+        <li class="home-li"><a href="#">home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Features</a></li>
         <li><a href="#">Pricing</a></li>
