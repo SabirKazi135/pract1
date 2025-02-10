@@ -8,10 +8,11 @@
       body {
         background-color: #121212;
         font-family: Arial, sans-serif;
+        color: white;
       }
     </style>
   </head>
-  <body>
+  <body onload="set()">
     <div>
       <h1>Hangman Game</h1>
       <h2 id="hearts">❤️❤️❤️❤️❤️❤️</h2>
@@ -20,5 +21,46 @@
       <p>Guess a letter:</p>
       <input type="text" id="guess" /><button onclick="check()">Submit</button>
     </div>
+    <script>
+      const wordList = [
+        "javascript",
+        "html",
+        "css",
+        "developer",
+        "coding",
+        "programming",
+      ];
+
+      const word = document.getElementById("choosenWord");
+      const bar = document.getElementById("spaceBar");
+      let choosenWord;
+      let choosenLetter = "";
+      let wordBar = "";
+      function update() {
+        wordBar == "";
+        bar.innerHTML = "";
+        for (let index = 1; index <= choosenWord.length; index++) {
+          if (choosenWord.length - index == 0) {
+            wordBar += "_";
+            break;
+          }
+          wordBar += "_ ";
+        }
+        bar.innerHTML = wordBar;
+      }
+      function set() {
+        choosenWord = wordList[Math.floor(Math.random() * wordList.length)];
+        word.innerHTML = choosenWord;
+        update();
+      }
+
+      function check() {
+        choosenLetter = document.getElementById("guess").value;
+        if (choosenWord.includes(choosenLetter)) {
+          updateCheck();
+        } else {
+        }
+      }
+    </script>
   </body>
 </html>
