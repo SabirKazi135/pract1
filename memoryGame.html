@@ -158,7 +158,6 @@
         document.getElementById("p").textContent =
           "Game reset. Click 'Start Game' to play again.";
         document.getElementById("seq").textContent = "";
-        // Remove all the correct and incorrect classes after reset
         buttons.forEach((button) => {
           button.classList.remove("correct", "incorrect");
         });
@@ -174,6 +173,13 @@
       }
 
       function check() {
+        if (sequence.length != userSequence.length) {
+          document.getElementById("p").textContent = "You are incorrect";
+          showSequence();
+
+          start.disabled = false;
+          return;
+        }
         for (let index = 0; index < sequence.length; index++) {
           let button = document.getElementById(sequence[index]);
           if (sequence[index] != userSequence[index]) {
@@ -184,6 +190,7 @@
           } else {
             button.classList.add("correct");
           }
+          start.disabled = false;
         }
 
         document.getElementById("p").textContent = "You are correct!";
@@ -191,6 +198,7 @@
       }
 
       function runRandom() {
+        start.disabled = true;
         for (let index = 0; index < 6; index++) {
           let randomNum = Math.floor(Math.random() * 16) + 1;
           sequence.push(randomNum);
@@ -211,6 +219,8 @@
 
         setTimeout(() => {
           enableButtons();
+
+          console.log(sequence);
         }, delay);
       }
 
