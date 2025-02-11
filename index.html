@@ -96,24 +96,31 @@
     <button id="check">Check</button>
     <button id="reset">Reset</button>
     <p id="p"></p>
+    <p id="seq"></p>
     <script>
       let buttons = document.querySelectorAll(".item");
 
-      function disableButtons(params) {
+      function disableButtons() {
+        checkButton.disabled = true; // Disable reset button
+
         buttons.forEach((button) => {
-          button.disabled = true;
+          button.disabled = true; // Disable all number buttons
         });
       }
 
       function enableButtons() {
+        checkButton.disabled = false;
+        resetButton.disabled = false; // Enable reset button
+
         buttons.forEach((button) => {
-          button.disabled = false;
+          button.disabled = false; // Enable all number buttons
         });
       }
 
       buttons.forEach((button) => {
         button.addEventListener("click", function () {
           userSequence.push(parseInt(this.id));
+          console.log(userSequence);
         });
       });
 
@@ -123,6 +130,16 @@
         sequence = [];
         document.getElementById("p").textContent =
           "Game reset. Click 'Start Game' to play again.";
+        document.getElementById("seq").textContent = "";
+      }
+
+      function showSequence() {
+        let s = "";
+        sequence.forEach((seq, index) => {
+          s += seq + " ";
+        });
+
+        document.getElementById("seq").textContent = `Sequence is: ${s}`;
       }
 
       function check() {
@@ -133,7 +150,8 @@
             return;
           }
         }
-        document.getElementById("p").textContent = "Your are correct";
+        document.getElementById("p").textContent = "You are correct";
+        showSequence();
       }
 
       function runRandom() {
@@ -159,7 +177,7 @@
         });
 
         setTimeout(() => {
-          enableButtons();
+          enableButtons(); // Enable buttons after sequence is shown
           console.log(sequence);
         }, delay);
       }
@@ -170,17 +188,17 @@
       start.addEventListener("click", (event) => {
         document.getElementById("p").textContent = "";
 
-        runRandom();
+        runRandom(); // Start the game and show sequence
       });
 
       const checkButton = document.getElementById("check");
       checkButton.addEventListener("click", () => {
-        check();
+        check(); // Check the user's sequence
       });
 
       const resetButton = document.getElementById("reset");
       resetButton.addEventListener("click", () => {
-        reset();
+        reset(); // Reset the game
       });
     </script>
   </body>
