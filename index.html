@@ -6,69 +6,64 @@
     <title>Document</title>
     <style>
       :root {
-        --bg-color: #121212;
+        --bg-color: #1e1e1e;
         --text-color: #ffffff;
         --accent-color: #ffcc00;
+        --highlight-color: #ff5722;
+        --grid-size: 4;
       }
       body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
         text-align: center;
+        color: white;
+        background-color: var(--bg-color);
       }
-
-      h1 {
-        font-size: 32px;
-        margin: 21px 0px;
-      }
-
-      button,
-      select {
+      button {
         border: none;
-        margin: 10px;
-        padding: 10px;
-        cursor: pointer;
         font-size: 16px;
         background-color: var(--accent-color);
+        color: #121212;
+        margin: 10px;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: 0.3s background-color ease;
+      }
+
+      button:hover {
+        background-color: #ffaa00;
+      }
+      .grid {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(var(--grid-size), 80px);
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .item {
+        background-color: #333;
+        height: 80px;
+        width: 80px;
+        cursor: pointer;
+        border-radius: 10px;
       }
     </style>
   </head>
   <body>
-    <h1>Dynamic Mood-Based Theme Generator</h1>
-    <span>Select Your Mood:</span>
-    <select name="" id="choice">
-      <option value="Happy">Happy</option>
-      <option value="Calm">Calm</option>
-      <option value="Sad">Sad</option>
-      <option value="Energetic">Energetic</option>
-    </select>
-    <button id="button">Apply Theme</button>
-    <script>
-      const button = document.getElementById("button");
-      button.addEventListener("click", () => {
-        let theme = {};
-        const mood = document.getElementById("choice").value;
-        switch (mood) {
-          case "Happy":
-            theme = { bg: "#ffcc00", text: "#121212", accent: "#ff6600" };
-            break;
-          case "Calm":
-            theme = { bg: "#2a3d66", text: "#ffffff", accent: "#1e88e5" };
-            break;
-          case "Sad":
-            theme = { bg: "#1c1f2b", text: "#c0c0c0", accent: "#607d8b" };
-            break;
-          case "Energetic":
-            theme = { bg: "#ff5722", text: "#ffffff", accent: "#ffeb3b" };
-            break;
-        }
-
-        document.documentElement.style.setProperty("--bg-color", theme.bg);
-        document.documentElement.style.setProperty("--text-color", theme.text);
-        document.documentElement.style.setProperty(
-          "--accent-color",
-          theme.accent
-        );
-      });
-    </script>
+    <h1>Memory Training Game</h1>
+    <p>Memorize the sequence and click the cells in the correct order</p>
+    <button id="button">Start Game</button>
+    <div class="grid">
+      <span class="item" id="1"></span>
+      <span class="item" id="2"></span><span class="item" id="3"></span>
+      <span class="item" id="4"></span><span class="item" id="5"></span>
+      <span class="item" id="6"></span><span class="item" id="7"></span>
+      <span class="item" id="8"></span>
+      <span class="item" id="9"></span>
+      <span class="item" id="10"></span>
+      <span class="item" id="11"></span><span class="item" id="12"></span
+      ><span class="item" id="13"></span><span class="item" id="14"></span
+      ><span class="item" id="15"></span><span class="item" id="16"></span>
+    </div>
   </body>
 </html>
