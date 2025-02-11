@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minimalist Smart Daily Planner</title>
+    <style>
+      :root {
+        --bg-color: #121212;
+        --text-color: #ffffff;
+        --accent-color: #ffcc00;
+      }
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      input,
+      button {
+        background-color: var(--accent-color);
+        color: #121212;
+        border: none;
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        background: #333;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Minimalist Smart Daily Planner</h1>
+    <input type="text" id="taskInput" placeholder="Enter a task..." />
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+
+    <script>
+      function addTask() {
+        const taskInput = document.getElementById("taskInput");
+        const taskList = document.getElementById("taskList");
+        if (taskInput.value.trim() === "") return;
+
+        const li = document.createElement("li");
+        li.textContent = taskInput.value;
+        li.onclick = () => li.remove();
+        taskList.appendChild(li);
+        taskInput.value = "";
+      }
+    </script>
+  </body>
+</html>

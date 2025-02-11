@@ -5,89 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      :root {
-        --primary-color: #11121a;
-        --hover-color: #272832;
-        --text-color: #c9c9c9;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
       body {
-        color: white;
-        background-color: var(--primary-color);
-        min-height: 100vh;
-        min-height: 100dvh;
-      }
-      nav {
-        background-color: var(--primary-color);
-        border-bottom: 1px solid var(--hover-color);
-      }
-      a {
-        color: white;
-      }
-
-      nav ul {
-        list-style: none;
-        display: flex;
-      }
-
-      nav .home-li {
-        margin-right: auto;
-      }
-
-      nav a {
-        display: flex;
-        text-decoration: none;
-        padding: 1em 2em;
-      }
-      nav li {
-        display: flex;
-      }
-      nav a:hover {
-        background-color: var(--hover-color);
-      }
-
-      @media screen and (max-width: 700px) {
-        nav {
-          position: fixed;
-          top: 0;
-          right: 0;
-          height: 100vh;
-          width: min(15em, 100%);
-          z-index: 10;
-          border-left: 1px solid var(--hover-color);
-        }
-        nav ul {
-          width: 100%;
-          flex-direction: column;
-        }
-
-        nav a {
-          width: 100%;
-          padding-left: 2.5em;
-        }
-
-        nav a.active-link {
-          border-bottom: none;
-        }
-        nav .home-li {
-          margin-right: unset;
-        }
+        background-color: #121212;
       }
     </style>
   </head>
   <body>
-    <nav>
-      <ul>
-        <li class="home-li active-link"><a href="#">home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Features</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">Login</a></li>
-      </ul>
-    </nav>
+    <h1>Dynamic Mood-Based Theme Generator</h1>
+    <span>Select Your Mood:</span>
+    <select name="" id="choice">
+      <option value="Happy">Happy</option>
+      <option value="Calm">Calm</option>
+      <option value="Sad">Sad</option>
+      <option value="Energetic">Energetic</option>
+    </select>
   </body>
 </html>

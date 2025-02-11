@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mood-Based Theme Generator</title>
+    <style>
+      :root {
+        --bg-color: #121212;
+        --text-color: #ffffff;
+        --accent-color: #ffcc00;
+      }
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      select,
+      button {
+        background-color: var(--accent-color);
+        color: #121212;
+        border: none;
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dynamic Mood-Based Theme Generator</h1>
+    <label for="mood">Select Your Mood:</label>
+    <select id="mood">
+      <option value="happy">Happy</option>
+      <option value="calm">Calm</option>
+      <option value="sad">Sad</option>
+      <option value="energetic">Energetic</option>
+    </select>
+    <button onclick="changeTheme()">Apply Theme</button>
+
+    <script>
+      function changeTheme() {
+        const mood = document.getElementById("mood").value;
+        let theme = {};
+
+        switch (mood) {
+          case "happy":
+            theme = { bg: "#ffcc00", text: "#121212", accent: "#ff6600" };
+            break;
+          case "calm":
+            theme = { bg: "#2a3d66", text: "#ffffff", accent: "#1e88e5" };
+            break;
+          case "sad":
+            theme = { bg: "#1c1f2b", text: "#c0c0c0", accent: "#607d8b" };
+            break;
+          case "energetic":
+            theme = { bg: "#ff5722", text: "#ffffff", accent: "#ffeb3b" };
+            break;
+        }
+
+        document.documentElement.style.setProperty("--bg-color", theme.bg);
+        document.documentElement.style.setProperty("--text-color", theme.text);
+        document.documentElement.style.setProperty(
+          "--accent-color",
+          theme.accent
+        );
+      }
+    </script>
+  </body>
+</html>
