@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --bg-color: #121212;
+        --text-color: #ffffff;
+        --accent-color: #ffcc00;
+        --highlight-color: #ff5722;
+        --correct-color: #4caf50;
+        --incorrect-color: #f44336;
+        --button-hover: #ffaa00;
+        --grid-size: 4;
+      }
+
+      body {
+        text-align: center;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        color: var(--accent-color);
+      }
+
+      button {
+        border: none;
+        font-size: 16px;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: 0.3s background-color ease;
+      }
+
+      #button,
+      #check,
+      #reset {
+        background-color: var(--accent-color);
+        color: #121212;
+        margin: 10px;
+      }
+
+      #button:hover,
+      #check:hover,
+      #reset:hover {
+        background-color: var(--button-hover);
+      }
+
+      .grid {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(var(--grid-size), 80px);
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .item {
+        background-color: #b87d6c;
+        color: var(--text-color);
+        font-size: 24px;
+        font-weight: bold;
+        height: 80px;
+        width: 80px;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+      }
+
+      .item:disabled {
+        cursor: not-allowed;
+        background-color: #333;
+      }
+
+      .item:active {
+        background-color: var(--highlight-color);
+      }
+
+      .show {
+        background-color: var(--highlight-color) !important;
+      }
+
+      .correct {
+        background-color: var(--correct-color) !important;
+      }
+
+      .incorrect {
+        background-color: var(--incorrect-color) !important;
+      }
+
+      .feedback {
+        font-size: 18px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body onload="disableButtons()">
+    <h1>Memory Training Game</h1>
+    <p>Memorize the sequence and click the cells in the correct order</p>
+    <button id="button">Start Game</button>
+    <div class="grid">
+      <button class="item" id="1">1</button>
+      <button class="item" id="2">2</button>
+      <button class="item" id="3">3</button>
+      <button class="item" id="4">4</button>
+      <button class="item" id="5">5</button>
+      <button class="item" id="6">6</button>
+      <button class="item" id="7">7</button>
+      <button class="item" id="8">8</button>
+      <button class="item" id="9">9</button>
+      <button class="item" id="10">10</button>
+      <button class="item" id="11">11</button>
+      <button class="item" id="12">12</button>
+      <button class="item" id="13">13</button>
+      <button class="item" id="14">14</button>
+      <button class="item" id="15">15</button>
+      <button class="item" id="16">16</button>
+    </div>
+
+    <button id="check">Check</button>
+    <button id="reset">Reset</button>
+    <p id="p" class="feedback"></p>
+    <p id="seq" class="feedback"></p>
+    <script>
+      let buttons = document.querySelectorAll(".item");
+
+      function disableButtons() {
+        checkButton.disabled = true;
+        resetButton.disabled = true;
+
+        buttons.forEach((button) => {
+          button.disabled = true;
+        });
+      }
+
+      function enableButtons() {
+        checkButton.disabled = false;
+        resetButton.disabled = false;
+
+        buttons.forEach((button) => {
+          button.disabled = false;
+        });
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", function () {
+          userSequence.push(parseInt(this.id));
+        });
+      });
+
+      function reset() {
+        disableButtons();
+        userSequence = [];
+        sequence = [];
+        document.getElementById("p").textContent =
+          "Game reset. Click 'Start Game' to play again.";
+        document.getElementById("seq").textContent = "";
+        // Remove all the correct and incorrect classes after reset
+        buttons.forEach((button) => {
+          button.classList.remove("correct", "incorrect");
+        });
+      }
+
+      function showSequence() {
+        let s = "";
+        sequence.forEach((seq, index) => {
+          s += seq + " ";
+        });
+
+        document.getElementById("seq").textContent = `Sequence is: ${s}`;
+      }
+
+      function check() {
+        for (let index = 0; index < sequence.length; index++) {
+          let button = document.getElementById(sequence[index]);
+          if (sequence[index] != userSequence[index]) {
+            document.getElementById("p").textContent = "You are incorrect";
+            showSequence();
+            button.classList.add("incorrect");
+            return;
+          } else {
+            button.classList.add("correct");
+          }
+        }
+
+        document.getElementById("p").textContent = "You are correct!";
+        showSequence();
+      }
+
+      function runRandom() {
+        for (let index = 0; index < 6; index++) {
+          let randomNum = Math.floor(Math.random() * 16) + 1;
+          sequence.push(randomNum);
+        }
+
+        let delay = 0;
+
+        sequence.forEach((num, idx) => {
+          setTimeout(() => {
+            document.getElementById(`${num}`).classList.add("show");
+            setTimeout(() => {
+              document.getElementById(`${num}`).classList.remove("show");
+            }, 500);
+          }, delay);
+
+          delay += 1000;
+        });
+
+        setTimeout(() => {
+          enableButtons();
+        }, delay);
+      }
+
+      let sequence = [];
+      let userSequence = [];
+      const start = document.getElementById("button");
+      start.addEventListener("click", (event) => {
+        document.getElementById("p").textContent = "";
+
+        runRandom();
+      });
+
+      const checkButton = document.getElementById("check");
+      checkButton.addEventListener("click", () => {
+        check();
+      });
+
+      const resetButton = document.getElementById("reset");
+      resetButton.addEventListener("click", () => {
+        reset();
+      });
+    </script>
+  </body>
+</html>
