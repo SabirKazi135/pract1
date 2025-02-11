@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      :root {
+        --primary-color: #11121a;
+        --hover-color: #272832;
+        --text-color: #c9c9c9;
+      }
       * {
         margin: 0;
         padding: 0;
@@ -12,12 +17,13 @@
       }
       body {
         color: white;
-        background-color: rgb(9, 11, 19);
+        background-color: var(--primary-color);
         min-height: 100vh;
         min-height: 100dvh;
       }
       nav {
-        background-color: rgb(13, 13, 41);
+        background-color: var(--primary-color);
+        border-bottom: 1px solid var(--hover-color);
       }
       a {
         color: white;
@@ -41,7 +47,7 @@
         display: flex;
       }
       nav a:hover {
-        background-color: rgba(13, 13, 124, 0.7);
+        background-color: var(--hover-color);
       }
     </style>
   </head>
