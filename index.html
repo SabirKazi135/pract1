@@ -45,21 +45,29 @@
     <script>
       const button = document.getElementById("button");
       button.addEventListener("click", () => {
+        let theme = {};
         const mood = document.getElementById("choice").value;
         switch (mood) {
-          case "happy":
+          case "Happy":
             theme = { bg: "#ffcc00", text: "#121212", accent: "#ff6600" };
             break;
-          case "calm":
+          case "Calm":
             theme = { bg: "#2a3d66", text: "#ffffff", accent: "#1e88e5" };
             break;
-          case "sad":
+          case "Sad":
             theme = { bg: "#1c1f2b", text: "#c0c0c0", accent: "#607d8b" };
             break;
-          case "energetic":
+          case "Energetic":
             theme = { bg: "#ff5722", text: "#ffffff", accent: "#ffeb3b" };
             break;
         }
+
+        document.documentElement.style.setProperty("--bg-color", theme.bg);
+        document.documentElement.style.setProperty("--text-color", theme.text);
+        document.documentElement.style.setProperty(
+          "--accent-color",
+          theme.accent
+        );
       });
     </script>
   </body>
