@@ -46,13 +46,32 @@
       .socials-container a::before {
         content: attr(data-social);
         position: absolute;
-        background-color: black;
+        background-color: var(--accent-color);
         color: white;
         text-decoration: none;
         padding: 0.5em 1em;
         border-radius: 100px;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
         transform: translateY(-65px);
+      }
+
+      .socials-container a:hover {
+        background-color: var(--accent-color);
+        fill: white;
+      }
+
+      socials-container a:hover svg {
+        fill: white;
+      }
+
+      .socials-container a::after {
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 10px solid var(--accent-color);
       }
     </style>
   </head>
