@@ -84,6 +84,7 @@
 
       .skill-section h2 {
         font-size: 56px;
+        color: var(--text-color);
       }
 
       .skill-container {
@@ -92,18 +93,23 @@
       }
 
       .skill-progress {
+        display: flex;
+        flex-direction: column;
+
         border: 10px solid #1b1c1f;
         border-top: none;
         width: 400px;
       }
 
       .skill-progress h3 {
+        margin-top: 0px;
         font-size: 21px;
         text-align: center;
         text-transform: uppercase;
         background-color: var(--primary-color);
         color: var(--text-color);
         width: 400px;
+        padding: 15px 0px;
       }
 
       @media (max-width: 1400px) {
@@ -173,8 +179,8 @@
       <h2>My Skillset</h2>
       <div class="skill-container">
         <div class="skill-container">
-          <h3>Front-End</h3>
           <div class="skill-progress">
+            <h3>Front-End</h3>
             <label for="adobe">Adobe Photoshop</label>
             <progress max="100" value="80" id="adobe"></progress>
             <label for="html-css">HTML,CSS</label>
@@ -185,8 +191,8 @@
             <progress max="100" value="70" id="react.js"></progress>
           </div>
         </div>
-        <h3>Back-End</h3>
         <div class="skill-progress">
+          <h3>Back-End</h3>
           <label for="express">Express.js</label>
           <progress max="100" value="70" id="express"></progress>
           <label for="node">Node.js</label>
