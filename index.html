@@ -83,6 +83,7 @@
       }
 
       .skill-section h2 {
+        text-align: center;
         font-size: 56px;
         color: var(--text-color);
       }
@@ -90,6 +91,9 @@
       .skill-container {
         margin-top: 60px;
         display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
       }
 
       .skill-progress {
@@ -110,6 +114,18 @@
         color: var(--text-color);
         width: 400px;
         padding: 15px 0px;
+      }
+
+      .prog {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+        padding: 20px;
+      }
+
+      .prog label {
+        font-size: 18px;
+        color: var(text-color);
       }
 
       @media (max-width: 1400px) {
@@ -176,11 +192,11 @@
       </div>
     </header>
     <section class="skill-section">
-      <h2>My Skillset</h2>
+      <h2>My SkillSet</h2>
       <div class="skill-container">
-        <div class="skill-container">
-          <div class="skill-progress">
-            <h3>Front-End</h3>
+        <div class="skill-progress">
+          <h3>Front-End</h3>
+          <div class="prog">
             <label for="adobe">Adobe Photoshop</label>
             <progress max="100" value="80" id="adobe"></progress>
             <label for="html-css">HTML,CSS</label>
@@ -191,16 +207,19 @@
             <progress max="100" value="70" id="react.js"></progress>
           </div>
         </div>
+
         <div class="skill-progress">
           <h3>Back-End</h3>
-          <label for="express">Express.js</label>
-          <progress max="100" value="70" id="express"></progress>
-          <label for="node">Node.js</label>
-          <progress max="100" value="70" id="node"></progress>
-          <label for="python">Python</label>
-          <progress max="100" value="50" id="python"></progress>
-          <label for="java">Java</label>
-          <progress max="100" value="70" id="java"></progress>
+          <div class="prog">
+            <label for="express">Express.js</label>
+            <progress max="100" value="70" id="express"></progress>
+            <label for="node">Node.js</label>
+            <progress max="100" value="70" id="node"></progress>
+            <label for="python">Python</label>
+            <progress max="100" value="50" id="python"></progress>
+            <label for="java">Java</label>
+            <progress max="100" value="70" id="java"></progress>
+          </div>
         </div>
       </div>
     </section>
