@@ -70,6 +70,14 @@
         background-color: #101113;
       }
 
+      progress {
+        accent-color: var(--accent-color);
+      }
+
+      label {
+        color: var(--text-color);
+      }
+
       @media (max-width: 1400px) {
         header {
           display: flex;
@@ -113,10 +121,6 @@
           font-size: 18px;
         }
       }
-
-      progress {
-        accent-color: var(--accent-color);
-      }
     </style>
   </head>
   <body>
@@ -155,14 +159,14 @@
         </div>
         <h3>Back-End</h3>
         <div class="skill-progress">
-          <label for="">Express.js</label>
-          <progress max="100" value="70" id=""></progress>
-          <label for="">Node.js</label>
-          <progress max="100" value="70" id=""></progress>
-          <label for="">Python</label>
-          <progress max="100" value="50" id=""></progress>
-          <label for="">Java</label>
-          <progress max="100" value="70" id=""></progress>
+          <label for="express">Express.js</label>
+          <progress max="100" value="70" id="express"></progress>
+          <label for="node">Node.js</label>
+          <progress max="100" value="70" id="node"></progress>
+          <label for="python">Python</label>
+          <progress max="100" value="50" id="python"></progress>
+          <label for="java">Java</label>
+          <progress max="100" value="70" id="java"></progress>
         </div>
       </div>
     </section>
