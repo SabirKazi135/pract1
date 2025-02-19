@@ -20,6 +20,8 @@
         justify-content: space-around;
         align-items: center;
         padding: 0 100px;
+        position: relative;
+        z-index: 100;
       }
 
       .banner {
@@ -33,6 +35,20 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
+      }
+
+      .banner::after {
+        content: "";
+        position: absolute;
+        inset: 0 0 0 0;
+        background-image: url(./1.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        z-index: 10;
+        pointer-events: none;
       }
 
       .content {
